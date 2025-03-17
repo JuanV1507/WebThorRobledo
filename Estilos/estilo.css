@@ -3,9 +3,9 @@
   --color-white: #ffffff;
   --color-light-gray: #f5f5f5;
   --color-dark-gray: #333333;
-  --color-primary: #002147;  /* Navy Blue */
-  --color-secondary: #003366;  /* Slightly darker navy */
-  --color-accent: #bfa06f;     /* Gold accent */
+  --color-primary: #FF5722;  /* Naranja/Rojizo */
+  --color-secondary: #BF360C;  /* Naranja oscuro */
+  --color-accent: #FFA726;     /* Acento dorado-naranja */
 }
 
 /* Reset básico */
@@ -35,18 +35,23 @@ body {
   justify-content: space-between;
   align-items: center;
   background: var(--color-white);
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem; /* Ajustado para ocupar menos espacio vertical */
   border-bottom: 2px solid var(--color-light-gray);
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-.navbar .logo h1 {
-  font-size: 1.8rem;
-  color: var(--color-primary);
-  font-weight: 700;
+
+/* Logo como imagen */
+.navbar .logo img {
+  max-height: 60px; /* Ajusta la altura a tu gusto */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -56,10 +61,13 @@ body {
   text-decoration: none;
   color: var(--color-dark-gray);
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, border-bottom 0.3s;
+  padding-bottom: 2px;
 }
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li a.active {
   color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
 }
 .lang-switch button {
   background: var(--color-primary);
@@ -76,7 +84,7 @@ body {
   background: var(--color-secondary);
 }
 
-/* Dark Mode (modo oscuro) */
+/* Dark Mode */
 body.dark-mode {
   background-color: #121212;
   color: #e0e0e0;
@@ -109,6 +117,7 @@ body.dark-mode .btn-primary:hover {
   justify-content: center;
   text-align: center;
   color: var(--color-white);
+  background-attachment: fixed;
 }
 .hero::before {
   content: "";
@@ -331,7 +340,7 @@ section {
   font-size: 0.95rem;
 }
 
-/* NEWSLETTER (si se usara, aquí no se usa en esta versión) */
+/* NEWSLETTER (opcional) */
 .newsletter {
   background-color: var(--color-dark-gray);
   color: var(--color-white);
@@ -520,6 +529,7 @@ footer {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
+    padding: 0.5rem 1rem;
   }
   .nav-links {
     flex-direction: column;
@@ -570,8 +580,33 @@ footer {
 }
 /* Ajusta el tamaño de los íconos en la sección de servicios */
 .service-card img.service-icon {
-  width: 80px;  /* Puedes ajustar este valor según lo que necesites */
+  width: 80px;
   height: auto;
-  margin: 0 auto 1rem auto; /* Centra la imagen y añade margen inferior */
+  margin: 0 auto 1rem;
   display: block;
+}
+
+/* Contador (opcional) */
+.counter {
+  width: 150px;
+  height: 150px;
+  border: 10px solid var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-light-gray);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin: 20px auto;
+  position: relative;
+}
+.counter-digits {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--secondary);
+}
+.counter-label {
+  font-size: 1rem;
+  color: var(--color-dark-gray);
 }
