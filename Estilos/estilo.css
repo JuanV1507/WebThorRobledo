@@ -313,13 +313,35 @@ section {
   100% { transform: translateX(-50%); }
 }
 
-/* MAPA */
+/* MAPA (Responsivo) */
+.map-container {
+  position: relative;
+  width: 100%;
+  /* Ajusta el valor para cambiar la relación de aspecto (56.25% = 16:9) */
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* (Opcional) Elimina o comenta la regla #mapa si ya no la usas */
+/*
 #mapa {
   width: 100%;
   height: 400px;
   margin-top: 2rem;
   border: 1px solid #ccc;
 }
+*/
 
 /* CONTACT */
 .contact form {
@@ -445,7 +467,7 @@ footer {
   color: var(--color-accent);
 }
 
-/* Mapa interactivo */
+/* Mapa interactivo (si se usara en otro lugar) */
 #map {
   width: 100%;
   height: 400px;
@@ -562,6 +584,7 @@ footer {
   .slide {
     width: 150px;
   }
+  /* Ajustar altura del iframe si lo deseas en mobile */
   .map-container iframe {
     height: 300px;
   }
