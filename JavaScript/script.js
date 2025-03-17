@@ -1,3 +1,9 @@
+// Inicializa AOS para las animaciones de scroll
+AOS.init({
+  duration: 1000,
+  once: true
+});
+
 // Diccionario de traducciones (Español e Inglés)
 const translations = {
   es: {
@@ -132,6 +138,57 @@ const translations = {
   },
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+  switchLanguage("es");
+
+  // Menú móvil
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+  mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-active');
+    mobileMenu.classList.toggle('toggle');
+  });
+
+  // Establece "active" en el menú al hacer clic
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      navItems.forEach(link => link.classList.remove('active'));
+      this.classList.add('active');
+      if (navLinks.classList.contains('nav-active')) {
+        navLinks.classList.remove('nav-active');
+        mobileMenu.classList.remove('toggle');
+      }
+    });
+  });
+
+  // Hero Slider: Cambiar imagen de fondo cada 5 segundos
+  const heroSection = document.getElementById('inicio');
+  const heroImages = [
+    'https://via.placeholder.com/1600x900?text=Hero+Image+1',
+    'https://via.placeholder.com/1600x900?text=Hero+Image+2',
+    'https://via.placeholder.com/1600x900?text=Hero+Image+3'
+  ];
+  let currentHero = 0;
+  setInterval(() => {
+    currentHero = (currentHero + 1) % heroImages.length;
+    heroSection.style.backgroundImage = `url('${heroImages[currentHero]}')`;
+  }, 5000);
+
+  // Botón "Back to Top"
+  const backToTopButton = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
 function switchLanguage(lang) {
   const elements = document.querySelectorAll("[data-key]");
   elements.forEach((element) => {
@@ -158,67 +215,10 @@ function switchLanguage(lang) {
     newsletterInput.placeholder = translations[lang].newsletterPlaceholder;
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  switchLanguage("es");
-
-  const faders = document.querySelectorAll(".fade-in");
-  const options = { threshold: 0.1 };
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        obs.unobserve(entry.target);
-      }
-    });
-  }, options);
-  faders.forEach(fader => {
-    observer.observe(fader);
-  });
-});
-
-function initMap() {
-  const merida = { lat: 20.967370, lng: -89.623700 };
-  const tlalnepantla = { lat: 19.539015, lng: -99.194866 };
-
-  const center = {
-    lat: (merida.lat + tlalnepantla.lat) / 2,
-    lng: (merida.lng + tlalnepantla.lng) / 2,
-  };
-
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: center,
-    zoom: 6,
-    gestureHandling: "cooperative",
-  });
-
-  new google.maps.Marker({
-    position: merida,
-    map: map,
-    title: "Oficina Mérida",
-  });
-  new google.maps.Marker({
-    position: tlalnepantla,
-    map: map,
-    title: "Oficina México",
-  });
-}
-
-// Dark Mode Toggle
-const darkModeToggle = document.getElementById("toggle-dark-mode");
-darkModeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
-
-// Botón "Back to Top"
-const backToTopButton = document.getElementById("back-to-top");
-window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 300) {
-    backToTopButton.classList.add("show");
-  } else {
-    backToTopButton.classList.remove("show");
-  }
-});
-backToTopButton.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+// Contador de visitas con countapi.xyz
+fetch('https://api.countapi.xyz/hit/tu-dominio.com/visitas')
+  .then(response => response.json())
+  .then(data => {
+    document.querySelector('#visit-counter .counter-digits').textContent = data.value;
+  })
+  .catch(err => console.error('Error fetching visit count:', err));
