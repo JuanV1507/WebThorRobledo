@@ -16,7 +16,7 @@ const translations = {
     navClientes: "Clientes",
     navMapa: "Mapa",
     navContacto: "Contacto",
-    heroTitle: "Recuperación de Cartera Vencida",
+    heroTitle: "IMPULSORA DE RECUPERACION CREDITICIA",
     heroSubtitle: "Ofrecemos soluciones profesionales y efectivas.",
     heroButton: "Contáctanos",
     aboutTitle: "Sobre Nosotros",
@@ -81,7 +81,7 @@ const translations = {
     navClientes: "Clients",
     navMapa: "Map",
     navContacto: "Contact",
-    heroTitle: "Overdue Portfolio Recovery",
+    heroTitle: "PROMOTER OFICIA CREDIT RECOVERY",
     heroSubtitle: "We offer professional and effective solutions.",
     heroButton: "Contact Us",
     aboutTitle: "About Us",
@@ -165,9 +165,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Hero Slider: Cambiar imagen de fondo cada 5 segundos
   const heroSection = document.getElementById('inicio');
   const heroImages = [
-    'https://via.placeholder.com/1600x900?text=Hero+Image+1',
-    'https://via.placeholder.com/1600x900?text=Hero+Image+2',
-    'https://via.placeholder.com/1600x900?text=Hero+Image+3'
+    'Imagenes/logo3.jpg',
+    'Imagenes/logo4.jpg',
+    
   ];
   let currentHero = 0;
   setInterval(() => {
