@@ -1,7 +1,7 @@
 # Página Web - IRC (Impulsora de Recuperación Crediticia)
 
 ## 📖 Descripción
-Landing page desarrollada para la empresa **IRC (Impulsora de Recuperación Crediticia)** con el objetivo de ofrecer una presentación digital moderna y profesional. El diseño fue adaptado a las necesidades tecnológicas y de imagen corporativa del cliente, proporcionando una experiencia visual clara, funcional y bilingue (ES,EN) para los usuarios.
+Landing page desarrollada para la empresa **IRC (Impulsora de Recuperación Crediticia)** con el objetivo de ofrecer una presentación digital moderna y profesional siendo responsive adaptandose a varios tamaños de pantalla. El diseño fue adaptado a las necesidades tecnológicas y de imagen corporativa del cliente, proporcionando una experiencia visual clara, funcional y bilingue (ES,EN) para los usuarios.
 
 ## 🚀 Tecnologías utilizadas
 - **Frontend:** HTML, CSS, JavaScript  
